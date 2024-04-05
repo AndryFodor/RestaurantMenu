@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height / 5,
         borderRadius: 12,
         elevation: 12,
-        shadowColor: '#f92c2c',
+        shadowColor: 'red',
         shadowOffset: {width: 1, height: 2},
         shadowOpacity: .4,
         shadowRadius: 4,
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     },
     iPhone: {
         opacity: .5,
-        paddingBottom: '3%'
+        paddingTop: '5%',
+        
     }
 })
