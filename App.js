@@ -1,9 +1,10 @@
-import { Platform, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet } from 'react-native';
+import { MenuGridTile } from './screens/MenuGridTile';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Start</Text>
+      <MenuGridTile />
     </SafeAreaView>
 
   );
@@ -11,6 +12,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    margin: Platform.OS ==='ios' ? 0 : '10%'
+    marginTop: Platform.OS ==='ios' ? 0 : '20%'
   },
 });
