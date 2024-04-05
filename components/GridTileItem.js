@@ -13,12 +13,15 @@ const generateHexDigit = (exclude) => {
     }
 }
 
-export const GridTileItem = ({title}) => {
+export const GridTileItem = ({title, jump}) => {
     prevColor = prevColor.split('').map(el => generateHexDigit(el)).join('');
     let textColor = prevColor.split('').map(el => generateHexDigit(el)).join('');
     return (
         <View style={[styles.container, { backgroundColor: `#${prevColor}` }]}>
-            <Pressable android_ripple={{color: '#f4eaef'}} style={({pressed}) => pressed && styles.iPhone}>
+            <Pressable 
+            android_ripple={{color: '#f4eaef'}} 
+            style={({pressed}) => pressed && styles.iPhone}
+            onPress={jump}>
                 <View style={styles.innerContainer}>
                     <Text style={[styles.textStyles, { color: `#${textColor}` }]}>{title}</Text>
                 </View>

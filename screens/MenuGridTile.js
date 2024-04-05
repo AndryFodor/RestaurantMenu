@@ -2,14 +2,16 @@ import { FlatList, StyleSheet } from "react-native"
 import { CATEGORIES } from "../data/dummy-data"
 import { GridTileItem } from "../components/GridTileItem"
 
-const RenderMethod = (data) => <GridTileItem title={data.item.title}/>
+const RenderMethod = (navigation) => (data) => {
+    return <GridTileItem title={data.item.title} jump={() => navigation.navigate('MealInfo')}/>
+}
 
-export const MenuGridTile = () => {
+export const MenuGridTile = ({navigation}) => {
     return (
         <FlatList
             data={CATEGORIES}
             keyExtractor={item => item.id}
-            renderItem={RenderMethod}
+            renderItem={RenderMethod(navigation)}
             numColumns={2}
             style={styles.flatList}
         />

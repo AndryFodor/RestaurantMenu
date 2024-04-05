@@ -3,6 +3,7 @@ import { MenuGridTile } from './screens/MenuGridTile';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MealInfo } from './screens/MealInfo'
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name='MealsCategories' component={MenuGridTile}/>
+          <Stack.Screen name='MealInfo' component={MealInfo}/>
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style='dark' />
