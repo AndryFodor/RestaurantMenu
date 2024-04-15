@@ -1,10 +1,14 @@
 import { Image, Platform, Pressable, StyleSheet, Text, View } from "react-native"
+import { colors } from "../utils/colors"
+import {useNavigation} from '@react-navigation/native'
 // TouchableOpacity
 export const MealCard = ({ affordability, title, complexity, image, duration, ingredients, steps, isGlutenFree, isLactoseFree, isVegan, isVegetarian, id }) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <Pressable android_ripple={Platform.OS === "android" ? {color: '#dedbdb'} : null}
-            style={({pressed}) => pressed && styles.pressed && Platform.OS === "ios"} >
+            style={({pressed}) => pressed && styles.pressed && Platform.OS === "ios"} 
+            onPress={() => navigation.navigate('MealDetails')}>
                 <View>
                     <Image source={{ uri: image }} style={styles.image} />
                     <Text style={styles.title}>{title}</Text>
@@ -21,7 +25,7 @@ export const MealCard = ({ affordability, title, complexity, image, duration, in
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: colors.lightBrown,
         margin: '5%',
         borderRadius: 20,
         overflow: 'hidden',
