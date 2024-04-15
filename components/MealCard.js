@@ -1,23 +1,22 @@
 import { Image, Platform, Pressable, StyleSheet, Text, View } from "react-native"
 import { colors } from "../utils/colors"
 import {useNavigation} from '@react-navigation/native'
+import { GeneralDetails } from "./GeneralDetails"
 // TouchableOpacity
-export const MealCard = ({ affordability, title, complexity, image, duration, ingredients, steps, isGlutenFree, isLactoseFree, isVegan, isVegetarian, id }) => {
+export const MealCard = (props) => {
+    const {affordability, title, complexity, image, duration, ...detailsScreen} = props
     const navigation = useNavigation();
+    
     return (
         <View style={styles.container}>
             <Pressable android_ripple={Platform.OS === "android" ? {color: '#dedbdb'} : null}
             style={({pressed}) => pressed && styles.pressed && Platform.OS === "ios"} 
-            onPress={() => navigation.navigate('MealDetails')}>
+            onPress={() => navigation.navigate('MealDetails', {mealTitle: title, image, affordability, complexity, duration, ...detailsScreen})}>
                 <View>
                     <Image source={{ uri: image }} style={styles.image} />
                     <Text style={styles.title}>{title}</Text>
                 </View>
-                <View style={styles.detailes}>
-                    <Text style={styles.detailesItem}>{affordability.toUpperCase()}</Text>
-                    <Text style={styles.detailesItem}>{complexity.toUpperCase()}</Text>
-                    <Text style={styles.detailesItem}>{duration} min</Text>
-                </View>
+                <GeneralDetails affordability={affordability} complexity={complexity} duration={duration}/>
             </Pressable>
         </View>
     )
@@ -45,14 +44,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         alignSelf: 'center',
         marginTop: 10,
-    },
-    detailes: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginVertical: 10,
-    },
-    detailesItem: {
-        paddingHorizontal: 10,
     },
     pressed: {
         opacity: .5
