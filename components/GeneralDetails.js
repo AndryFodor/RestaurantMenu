@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native"
 
-export const GeneralDetails = ({ affordability, complexity, duration }) => {
-    return <View style={styles.detailes}>
-        <Text style={styles.detailesItem}>{affordability.toUpperCase()}</Text>
-        <Text style={styles.detailesItem}>{complexity.toUpperCase()}</Text>
-        <Text style={styles.detailesItem}>{duration} min</Text>
+export const GeneralDetails = ({ affordability, complexity, duration, style, textStyle }) => {
+    return <View style={[styles.detailes, style]}>
+        <Text style={[styles.detailesItem, textStyle]}>{affordability.toUpperCase()}</Text>
+        <Text style={[styles.detailesItem, textStyle]}>{complexity.toUpperCase()}</Text>
+        <Text style={[styles.detailesItem, textStyle]}>{duration} min</Text>
     </View>
 }
 
