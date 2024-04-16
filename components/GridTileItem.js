@@ -1,4 +1,5 @@
 import { Dimensions, Platform, Pressable, StyleSheet, Text, View } from "react-native"
+import { colors } from "../utils/colors";
 
 let prevColor = '000';
 const generateHexDigit = (exclude) => {
@@ -13,12 +14,15 @@ const generateHexDigit = (exclude) => {
     }
 }
 
-export const GridTileItem = ({title}) => {
+export const GridTileItem = ({title, jump}) => {
     prevColor = prevColor.split('').map(el => generateHexDigit(el)).join('');
     let textColor = prevColor.split('').map(el => generateHexDigit(el)).join('');
     return (
         <View style={[styles.container, { backgroundColor: `#${prevColor}` }]}>
-            <Pressable android_ripple={{color: '#f4eaef'}} style={({pressed}) => pressed && styles.iPhone}>
+            <Pressable 
+            android_ripple={{color: colors["brown-white"]}} 
+            style={({pressed}) => pressed && styles.iPhone}
+            onPress={jump}>
                 <View style={styles.innerContainer}>
                     <Text style={[styles.textStyles, { color: `#${textColor}` }]}>{title}</Text>
                 </View>
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height / 5,
         borderRadius: 12,
         elevation: 12,
-        shadowColor: '#f92c2c',
+        shadowColor: 'red',
         shadowOffset: {width: 1, height: 2},
         shadowOpacity: .4,
         shadowRadius: 4,
@@ -52,6 +56,7 @@ const styles = StyleSheet.create({
     },
     iPhone: {
         opacity: .5,
-        paddingBottom: '3%'
+        paddingTop: '5%',
+        
     }
 })
