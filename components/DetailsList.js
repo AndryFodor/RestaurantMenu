@@ -5,7 +5,9 @@ export const DetailsList = ({ elements, numbered, title }) => {
     return <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
         {elements.map((el, idx) => <View key={el} style={styles.li}>
-            <Text style={styles.liText}>{numbered ? `#${idx + 1}` : null} {el}</Text>
+            <Text style={[styles.liText, numbered ? { alignSelf: 'flex-start' } : null]}>
+                {numbered ? `#${idx + 1}` : null} {el}
+            </Text>
         </View>)}
     </View>
 }
@@ -37,6 +39,6 @@ const styles = StyleSheet.create({
     liText: {
         color: colors.brown,
         fontWeight: 'bold',
-        fontSize: 16
+        fontSize: 16,
     }
 })

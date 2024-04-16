@@ -1,4 +1,5 @@
 import { Dimensions, Platform, Pressable, StyleSheet, Text, View } from "react-native"
+import { colors } from "../utils/colors";
 
 let prevColor = '000';
 const generateHexDigit = (exclude) => {
@@ -19,7 +20,7 @@ export const GridTileItem = ({title, jump}) => {
     return (
         <View style={[styles.container, { backgroundColor: `#${prevColor}` }]}>
             <Pressable 
-            android_ripple={{color: '#f4eaef'}} 
+            android_ripple={{color: colors["brown-white"]}} 
             style={({pressed}) => pressed && styles.iPhone}
             onPress={jump}>
                 <View style={styles.innerContainer}>

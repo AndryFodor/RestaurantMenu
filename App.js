@@ -17,7 +17,7 @@ export default function App() {
           headerStyle: {
             backgroundColor: colors.darkBrown
           },
-          headerTintColor: 'white',
+          headerTintColor: colors['brown-white'],
           contentStyle: {
             backgroundColor: colors.brown
           }
